@@ -8,7 +8,7 @@ import useAuth from '../../../Hooks/useAuth';
 const Login = () => {
 
     const [LoginData, setLoginData] = useState({});
-    const {user, isLoading, authError, loginUser} = useAuth();
+    const {user, isLoading, authError, loginUser, signInWithGoogle} = useAuth();
 
     const location = useLocation();
     const history = useHistory();
@@ -27,6 +27,9 @@ const Login = () => {
         loginUser(LoginData.email, LoginData.password, location, history);
         alert('login');
     }
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location,history)
+    }
     return (
         <Container>
             <Grid container spacing={2}>
@@ -34,7 +37,7 @@ const Login = () => {
                     <Typography variant="body1" gutterBottom>
                         Login
                     </Typography>
-                    {!isLoading && <form onSubmit={handleLoginSubmit}>
+                    <form onSubmit={handleLoginSubmit}>
                         <TextField
                             id="standard-basic"
                             label="Your Email"
@@ -53,8 +56,11 @@ const Login = () => {
                             sx={{ width: '75%', m: 1 }}
                         />
                         <Button sx={{ width: '75%', m: 3 }} type="submit" variant="contained">Login</Button>
-                        <NavLink to="/register" style={{ textDecoration: 'none', m:10 }}><Button color="inherit">New User? Please Register.</Button></NavLink>
-                    </form>}
+                        <NavLink to="/register" style={{ textDecoration: 'none', m:10 }}>
+                            <Button color="inherit">New User? Please Register.</Button>
+                        </NavLink>
+                    </form>
+                    <Button onClick ={handleGoogleSignIn} variant="contained" color="inherit">Sing In With Google</Button>
                     {isLoading && <CircularProgress />}
                     {user?.email && <Alert severity="success">Login successfully!</Alert>}
                     {authError && <Alert severity="error">{authError}</Alert>}

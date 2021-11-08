@@ -35,7 +35,10 @@ const Header = () => {
                     </NavLink>
                     {
                         user?.email ?
-                            <Button onClick={logout} color="inherit">Logout</Button>
+                            <>
+                                <Button onClick={logout} color="inherit">Logout</Button>
+                                <Button color="inherit">{user.displayName}</Button>
+                            </>
                             :
                             <>
                                 <NavLink to="/login" style={{ textDecoration: 'none', color: 'white' }}>
