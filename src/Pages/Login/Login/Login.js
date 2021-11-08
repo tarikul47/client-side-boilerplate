@@ -1,5 +1,6 @@
 import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import loginImg from './../../../images/login.png';
 
 
@@ -46,6 +47,7 @@ const Login = () => {
                             sx={{ width: '75%', m: 1 }}
                         />
                         <Button sx={{ width: '75%', m: 3 }} type="submit" variant="contained">Login</Button>
+                        <NavLink to="/register" style={{ textDecoration: 'none', m:10 }}><Button color="inherit">New User? Please Register.</Button></NavLink>
                     </form>
                 </Grid>
                 <Grid item xs={12} md={6}>

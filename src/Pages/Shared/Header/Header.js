@@ -28,6 +28,7 @@ const Header = () => {
                         News
                     </Typography>
                     <NavLink to="/login" style={{ textDecoration: 'none', color: 'white' }}><Button color="inherit">Login</Button></NavLink>
+                    <NavLink to="/register" style={{ textDecoration: 'none', color: 'white' }}><Button color="inherit">Register</Button></NavLink>
                 </Toolbar>
             </AppBar>
         </Box>
